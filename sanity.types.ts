@@ -291,7 +291,7 @@ export type Address = {
 };
 
 export type Category = {
-  productCount: any;
+  productCount?: number;
   _id: string;
   _type: "category";
   _createdAt: string;

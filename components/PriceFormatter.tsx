@@ -21,3 +21,12 @@ const PriceFormatter = ({ amount, className }: Props) => {
 };
 
 export default PriceFormatter;
+
+/*
+--> new Number(amount) → wraps the number in a Number object.
+
+--> .toLocaleString("en-US", { ... }) formats the number according to U.S. currency rules.
+       --currency: "USD" → display as dollars.
+       --style: "currency" → show the $ sign and proper money formatting.
+       --minimumFractionDigits: 2 → always show two decimal places.
+ */
