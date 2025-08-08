@@ -27,7 +27,7 @@ export const ProductCard = ({product}:{product:Product}) => {
         )}
           {/* <ProductSideMenu product={product} /> */}
           {product?.status === "sale" ? (
-          <p className="absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 rounded-full group-hover:border-lightGreen hover:text-[#063c28] hoverEffect">
+          <p className="absolute top-2 left-2 z-10 text-xs border border-[#151515]/50 px-2 rounded-full group-hover:border-lightGreen hover:text-[#063c28] hoverEffect">
             Sale!
           </p>
         ) : (

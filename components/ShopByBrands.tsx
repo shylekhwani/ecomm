@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from "@/sanity/lib/image";
 import { GitCompareArrows, Headset, ShieldCheck, Truck } from "lucide-react";
+import { Brand } from '@/sanity.types';
 
 const extraData = [
   {
@@ -48,7 +49,7 @@ export const ShopByBrands = async () => {
 
           {/* Brands Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2.5">
-            {brands?.map((brand) => (
+            {brands?.map((brand: Brand) => (
               <Link
                key={brand?._id}
                className='bg-white w-34 h-24 flex items-center justify-center rounded-md overflow-hidden hover:shadow-lg shadow-[#063c28]/20 hoverEffect'
