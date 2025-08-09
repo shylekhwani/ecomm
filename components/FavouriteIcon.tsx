@@ -2,8 +2,31 @@
 import { Heart } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Product } from "@/sanity.types";
 
-export const FavouriteIcon = () => {
+export const FavouriteIcon = ({
+  showProduct = false,
+  product,
+}: {
+  showProduct?: boolean;
+  product?: Product | null | undefined;
+}) => {
+
+ const [existingProduct, setExistingProduct] = useState<Product | null>(null);
+
+//  const handleFavorite = (e: React.MouseEvent<HTMLSpanElement>) => {
+//     e.preventDefault();
+//     if (product?._id) {
+//       addToFavorite(product).then(() => {
+//         toast.success(
+//           existingProduct
+//             ? "Product removed successfully!"
+//             : "Product added successfully!"
+//         );
+//       });
+//     }
+//   };
+
   return (
     <>
      <Link href={"/wishlist"} className="group relative">
