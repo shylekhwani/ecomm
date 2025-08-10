@@ -8,6 +8,7 @@ import { Product } from "@/sanity.types";
 const DealPage = async () => {
   
   const products = await getDealProducts();
+  // console.log("products", products);
 
   return (
     <div className="py-10 bg-[#f1f3f8]">
