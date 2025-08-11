@@ -7,11 +7,15 @@ import { StarIcon } from "@sanity/icons";
 import { Flame } from "lucide-react";
 import Title from "./Title";
 import PriceView from './PriceView';
+import ProductSideMenu from './ProductSideMenu';
+import AddToCartButton from './AddToCartButton';
 
 export const ProductCard = ({product}:{product:Product}) => {
   return (
      <div className="text-sm border-[1px] rounded-md border-darkBlue/20 group bg-white">
       <div className="relative group overflow-hidden bg-[#f6f6f6]">
+
+        {/* Display product image if available */}
         {product?.images && (
             <Link href={`/product/${product?.slug?.current}`}>
             <Image
@@ -25,14 +29,17 @@ export const ProductCard = ({product}:{product:Product}) => {
             />
             </Link>
         )}
-          {/* <ProductSideMenu product={product} /> */}
+
+        {/* Display product side menu and sale or deal icon */}
+          <ProductSideMenu product={product} />
+
           {product?.status === "sale" ? (
           <p className="absolute top-2 left-2 z-10 text-xs border border-[#151515]/50 px-2 rounded-full group-hover:border-lightGreen hover:text-[#063c28] hoverEffect">
             Sale!
           </p>
         ) : (
           <Link
-            href={"/deal"}
+            href={"/hotdeal"}
             className="absolute top-2 left-2 z-10 border border-[#fb6c08]/50 p-1 rounded-full group-hover:border-[#fb6c08] hover:text-[#063c28] hoverEffect"
           >
             <Flame
@@ -43,6 +50,8 @@ export const ProductCard = ({product}:{product:Product}) => {
           </Link>
         )}
       </div>
+      
+      {/* Product details section */}
       <div className="p-3 flex flex-col gap-2">
          {product?.categories && (
           <p className="uppercase line-clamp-1 text-xs font-medium text-lightText">
@@ -79,7 +88,7 @@ export const ProductCard = ({product}:{product:Product}) => {
           discount={product?.discount}
           className="text-sm"
         />
-        {/* <AddToCartButton product={product} className="w-36 rounded-full" /> */}
+        <AddToCartButton product={product} className="w-36 rounded-full" />
       </div>
     </div>
   )

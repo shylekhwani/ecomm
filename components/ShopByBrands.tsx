@@ -53,7 +53,7 @@ export const ShopByBrands = async () => {
               <Link
                key={brand?._id}
                className='bg-white w-34 h-24 flex items-center justify-center rounded-md overflow-hidden hover:shadow-lg shadow-[#063c28]/20 hoverEffect'
-               href={`/brand/${brand?.slug?.current}`}
+               href={{pathname: "/shop", query: { brand: brand?.slug?.current }}}
               >
                {brand?.image && (
                 <Image

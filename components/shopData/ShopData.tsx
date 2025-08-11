@@ -25,6 +25,7 @@ export const ShopData = ({categories, brands}:ShopDataProps) => {
   const searchParams = useSearchParams();
   const brandParams = searchParams?.get("brand");
   const categoryParams = searchParams?.get("category");
+  // console.log("searchParams",searchParams, brandParams, categoryParams);
 
   // ✅ Local state for products and filters
   const [products, setProducts] = useState<Product[]>([]);
@@ -86,6 +87,7 @@ export const ShopData = ({categories, brands}:ShopDataProps) => {
             <Title className="text-lg uppercase tracking-wide">
               Get the products as your needs
             </Title>
+             {/*if any condition is true we show reset button*/}
             {(selectedCategory !== null ||
               selectedBrand !== null ||
               selectedPrice !== null) && (

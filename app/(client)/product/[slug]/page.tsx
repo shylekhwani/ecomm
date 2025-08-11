@@ -1,4 +1,4 @@
-// import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/AddToCartButton";
 import Container from "@/components/Container";
 import { FavouriteIcon } from "@/components/FavouriteIcon";
 import ImageView from "@/components/ImageView";
@@ -71,8 +71,8 @@ const SingleProductPage = async ({
 
         {/* Action buttons for adding to cart, favorite, and product characteristics */}
         <div className="flex items-center gap-2.5 lg:gap-3">
-          {/* <AddToCartButton product={product} /> */}
-          {/* <FavouriteIcon showProduct={true} product={product} /> */}
+          <AddToCartButton product={product} />
+          <FavouriteIcon showProduct={true} product={product} />
         </div>
 
         {/* Additional product information and actions */}
