@@ -7,7 +7,7 @@ import { StarIcon } from "@sanity/icons";
 import { Flame } from "lucide-react";
 import Title from "./Title";
 import PriceView from './PriceView';
-import ProductSideMenu from './ProductSideMenu';
+import AddToFavourite from './AddToFavourite';
 import AddToCartButton from './AddToCartButton';
 
 export const ProductCard = ({product}:{product:Product}) => {
@@ -31,7 +31,7 @@ export const ProductCard = ({product}:{product:Product}) => {
         )}
 
         {/* Display product side menu and sale or deal icon */}
-          <ProductSideMenu product={product} />
+          <AddToFavourite product={product} />
 
           {product?.status === "sale" ? (
           <p className="absolute top-2 left-2 z-10 text-xs border border-[#151515]/50 px-2 rounded-full group-hover:border-lightGreen hover:text-[#063c28] hoverEffect">

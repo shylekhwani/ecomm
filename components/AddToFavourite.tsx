@@ -6,7 +6,7 @@ import { Heart } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const ProductSideMenu = ({
+const AddTofavourite = ({
   product,
   className,
 }: {
@@ -42,7 +42,7 @@ const ProductSideMenu = ({
     >
       <div
         onClick={handleFavorite}
-        className={`p-2.5 rounded-full hover:bg-shop_dark_green/80 hover:text-white hoverEffect  ${existingProduct ? "bg-shop_dark_green/80 text-white" : "bg-lightColor/10"}`}
+        className={`p-2.5 rounded-full hover:bg-[#063d29]/80 hover:text-white hoverEffect  ${existingProduct ? "bg-[#063d29]/80 text-white" : "bg-[#52525b]/10"}`}
       >
         <Heart size={15} />
       </div>
@@ -50,4 +50,4 @@ const ProductSideMenu = ({
   );
 };
 
-export default ProductSideMenu;
+export default AddTofavourite;
