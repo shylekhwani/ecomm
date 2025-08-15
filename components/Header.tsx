@@ -25,7 +25,7 @@ export const Header = async () => {
     if (userId) {
       orders = await getMyOrders(userId);
     };
-
+  
   return (
     <header className="sticky top-0 z-50 py-5 bg-white/70 backdrop-blur-md">
         <Container className="flex items-center justify-between text-[#52525b]">
