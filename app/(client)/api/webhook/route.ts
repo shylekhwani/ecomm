@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
   // Get Stripe's signature header (sent in every webhook request)
   const sig = headersList.get("stripe-signature");
 
-  console.log("body", body, "headers:", headersList, "sig:", sig);
+  console.log("body:", body);
+  console.log("headers:", Object.fromEntries(req.headers.entries())); // convert to plain object
+  console.log("sig:", sig);
 
   // If Stripe signature is missing → reject request
   if (!sig) {
