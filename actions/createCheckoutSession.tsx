@@ -13,12 +13,12 @@ export interface Metadata {
   customerEmail: string;
   clerkUserId?: string;
   address?: Address | null;
-}
+};
 
 export interface GroupedCartItems {
   product: CartItem["product"]; //“Take the type of the [product] property from the [CartItem] interface.”
   quantity: number;
-}
+};
 
 export async function createCheckoutSession(
   items: GroupedCartItems[],
@@ -30,7 +30,7 @@ export async function createCheckoutSession(
       email: metadata.customerEmail,
       limit: 1,
     });
-    const customerId = customers?.data?.length > 0 ? customers.data[0].id : "";
+    const customerId = customers?.data?.length > 0 ? customers.data[0].id : ""; // If customer exists, get their ID
 
     // 2. Prepare the payload for checkout
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
