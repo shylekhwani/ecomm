@@ -25,16 +25,18 @@ export async function createCheckoutSession(
   metadata: Metadata
 ) {
   try {
+    // console.log("stripe", stripe)
     // 1. See if this customer already exists in Stripe
     const customers = await stripe.customers.list({
       email: metadata.customerEmail,
       limit: 1,
     });
     const customerId = customers?.data?.length > 0 ? customers.data[0].id : ""; // If customer exists, get their ID
+    console.log("customers", customers, "customerId", customerId);
 
     // 2. Prepare the payload for checkout
     const sessionPayload: Stripe.Checkout.SessionCreateParams = {
-      metadata: {
+      metadata: { // order info we want to save in Stripe
         orderNumber: metadata.orderNumber,
         customerName: metadata.customerName,
         customerEmail: metadata.customerEmail,
@@ -75,6 +77,7 @@ export async function createCheckoutSession(
     } else {
       sessionPayload.customer_email = metadata.customerEmail;
     }
+    console.log("sessionPayload", sessionPayload);
 
     // 4. Create the Stripe Checkout Session
     const session = await stripe.checkout.sessions.create(sessionPayload);

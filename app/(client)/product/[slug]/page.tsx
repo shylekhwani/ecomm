@@ -1,9 +1,9 @@
-import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/product/AddToCartButton";
 import Container from "@/components/Container";
-import { FavouriteIcon } from "@/components/FavouriteIcon";
-import ImageView from "@/components/ImageView";
-import PriceView from "@/components/PriceView";
-import ProductCharacteristics from "@/components/ProductCharacteristics";
+import { FavouriteIcon } from "@/components/product/FavouriteIcon";
+import ImageView from "@/components/product/ImageView";
+import PriceView from "@/components/product/PriceView";
+import ProductCharacteristics from "@/components/product/ProductCharacteristics";
 import { getProductBySlug } from "@/sanity/queries";
 import { CornerDownLeft, StarIcon, Truck } from "lucide-react";
 import { notFound } from "next/navigation";

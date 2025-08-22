@@ -1,4 +1,4 @@
-import {Logo} from "@/components/Logo";
+import {Logo} from "@/components/header/Logo";
 import Link from "next/link";
 import React from "react";
 

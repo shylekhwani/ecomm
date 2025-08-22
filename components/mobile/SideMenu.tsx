@@ -2,10 +2,10 @@ import React from 'react'
 import { FC } from 'react';
 import { X } from "lucide-react";
 import Link from "next/link";
-import { Logo } from './Logo';
+import { Logo } from '../header/Logo';
 import { headerData } from "@/constants/data";
 import { usePathname } from "next/navigation"
-import { SocialMedia } from './SocialMedia';
+import { SocialMedia } from '../SocialMedia';
 import { useOutsideClick } from '@/hook';
 
 interface SideMenuProps {

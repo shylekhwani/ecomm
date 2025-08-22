@@ -7,8 +7,8 @@ import {
 import Container from "@/components/Container";
 import EmptyCart from "@/components/EmptyCart";
 import NoAccess from "@/components/NoAccess";
-import PriceFormatter from "@/components/PriceFormatter";
-import QuantityButtons from "@/components/QuantityButtons";
+import PriceFormatter from "@/components/product/PriceFormatter";
+import QuantityButtons from "@/components/product/QuantityButtons";
 import Title from "@/components/Title";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +31,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast"; 
-import AddTofavourite from "@/components/AddToFavourite";
+import AddTofavourite from "@/components/product/AddToFavourite";
 
 const CartPage = () => {
   
@@ -51,7 +51,7 @@ const CartPage = () => {
   const [addresses, setAddresses] = useState<Address[] | null>(null); // Store fetched addresses
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null); // Currently selected delivery address
 
-  console.log("CartPage", groupedItems, addresses, selectedAddress);
+  console.log("CartPage", "GrpItems->", groupedItems, "address->", addresses, "selctdAdd->", selectedAddress);
 
   // Fetch addresses from Sanity CMS
   const fetchAddresses = async () => {

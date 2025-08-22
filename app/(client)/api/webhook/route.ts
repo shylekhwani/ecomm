@@ -18,9 +18,9 @@ export async function POST(req: NextRequest) {
   // Get Stripe's signature header (sent in every webhook request)
   const sig = headersList.get("stripe-signature");
 
-  console.log("body:", body);
-  console.log("headers:", Object.fromEntries(req.headers.entries())); // convert to plain object
-  console.log("sig:", sig);
+  // console.log("body:", body);
+  // console.log("headers:", Object.fromEntries(req.headers.entries())); // convert to plain object
+  // console.log("sig:", sig);
 
   // If Stripe signature is missing → reject request
   if (!sig) {
@@ -53,6 +53,7 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+  console.log("Verified Stripe event:", event);
 
   // Handle the specific event type
   if (event.type === "checkout.session.completed") {
@@ -77,7 +78,8 @@ export async function POST(req: NextRequest) {
 
   // Always return 200 OK so Stripe doesn’t retry
   return NextResponse.json({ received: true });
-}
+};
+
 
 // Helper to create an order document in Sanity
 async function createOrderInSanity(
@@ -170,7 +172,8 @@ async function createOrderInSanity(
   await updateStockLevels(stockUpdates);
 
   return order;
-}
+};
+
 
 // Function to update stock levels in Sanity
 async function updateStockLevels(

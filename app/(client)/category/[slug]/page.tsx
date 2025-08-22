@@ -1,4 +1,4 @@
-import CategoryProducts from "@/components/CategoryProducts";
+import CategoryProducts from "@/components/product/CategoryProducts";
 import Container from "@/components/Container";
 import Title from "@/components/Title";
 import { getCategories } from "@/sanity/queries";

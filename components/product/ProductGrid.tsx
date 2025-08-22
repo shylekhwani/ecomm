@@ -4,12 +4,12 @@
 
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { HomeTabBar } from './HomeTabBar';
+import { HomeTabBar } from '../HomeTabBar';
 import { productType } from '@/constants/data';
-import Container from './Container';
+import Container from '../Container';
 import { client } from '@/sanity/lib/client';
 import { motion } from 'motion/react';
-import { NoProductAvailable } from './NoProductAvailable';
+import { NoProductAvailable } from '../NoProductAvailable';
 import { AnimatePresence } from 'motion/react';
 import { Loader2 } from 'lucide-react';
 import { ProductCard } from './ProductCard';

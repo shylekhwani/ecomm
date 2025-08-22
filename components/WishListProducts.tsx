@@ -10,8 +10,8 @@ import { Product } from "@/sanity.types";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import PriceFormatter from "./PriceFormatter";
-import AddToCartButton from "./AddToCartButton";
+import PriceFormatter from "./product/PriceFormatter";
+import AddToCartButton from "./product/AddToCartButton";
 
 const WishListProducts = () => {
   const [visibleProducts, setVisibleProducts] = useState(7);

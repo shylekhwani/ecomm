@@ -5,7 +5,7 @@ import React from 'react'
 import Link from "next/link";
 import { StarIcon } from "@sanity/icons";
 import { Flame } from "lucide-react";
-import Title from "./Title";
+import Title from "../Title";
 import PriceView from './PriceView';
 import AddToFavourite from './AddToFavourite';
 import AddToCartButton from './AddToCartButton';

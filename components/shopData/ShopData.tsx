@@ -12,7 +12,7 @@ import PriceList from './PriceList';
 import { client } from "@/sanity/lib/client";
 import { Loader2 } from "lucide-react";
 import {NoProductAvailable} from "../NoProductAvailable";
-import {ProductCard} from "../ProductCard";
+import {ProductCard} from "../product/ProductCard";
 
 interface ShopDataProps {
     categories: Category[];
