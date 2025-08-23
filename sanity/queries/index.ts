@@ -3,6 +3,7 @@ import {
   BRAND_QUERY,
   BRANDS_QUERY,
   DEAL_PRODUCTS,
+  GETAll_PRODUCTS,
   MY_ORDERS_QUERY,
   PRODUCT_BY_SLUG_QUERY,
 } from "./query";
@@ -35,6 +36,17 @@ const getAllBrands = async () => {
     return data ?? [];
   } catch (error) {
     console.log("Error fetching all brands:", error);
+    return [];
+  }
+};
+
+
+const getAllProducts = async () => {
+  try {
+    const  {data} = await sanityFetch({ query: GETAll_PRODUCTS });
+    return data ?? []; // Ensure data is returned as an array  
+  } catch (error) {
+    console.log("Error fetching all Products:", error);
     return [];
   }
 };
@@ -98,6 +110,7 @@ const getMyOrders = async (userId: string) => {
 export {
   getCategories,
   getAllBrands,
+  getAllProducts,
   getDealProducts,
   getProductBySlug,
   getBrand,

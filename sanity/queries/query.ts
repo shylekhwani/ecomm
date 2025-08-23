@@ -2,6 +2,40 @@ import { defineQuery } from "next-sanity";
 
 const BRANDS_QUERY = defineQuery(`*[_type=='brand'] | order(name asc) `);
 
+const GETAll_PRODUCTS = defineQuery(
+  `*[_type == "product"]{
+      _id,
+      _type,
+      _createdAt,
+      _updatedAt,
+      _rev,
+      name,
+      slug,
+      description,
+      price,
+      discount,
+      stock,
+      status,
+      variant,
+      isFeatured,
+      "categories": categories[]->{
+        _id,
+        title,
+        slug
+      },
+      "brand": brand->{
+        _id,
+        title
+      },
+      images[]{
+        _key,
+        _type,
+        crop,
+        hotspot,
+        "url": asset->url
+      }
+    }`
+);
 
 const DEAL_PRODUCTS = defineQuery(
   `
@@ -38,6 +72,7 @@ const MY_ORDERS_QUERY =
 export {
   BRANDS_QUERY,
   DEAL_PRODUCTS,
+  GETAll_PRODUCTS,
   PRODUCT_BY_SLUG_QUERY,
   BRAND_QUERY,
   MY_ORDERS_QUERY,

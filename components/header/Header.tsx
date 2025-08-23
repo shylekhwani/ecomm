@@ -9,11 +9,14 @@ import { SignIn } from './SignIn'
 import { MobileMenu } from '../mobile/MobileMenu'
 import {auth, currentUser } from '@clerk/nextjs/server'
 import { ClerkLoaded, SignedIn, UserButton } from '@clerk/nextjs'
-import { getMyOrders } from "@/sanity/queries";
+import { getAllProducts, getMyOrders } from "@/sanity/queries";
 import Link from 'next/link'
 import { Logs } from 'lucide-react'
 
 export const Header = async () => {
+
+    const products = await getAllProducts();
+    // console.log("Products in Header:", products);
 
     const user = await currentUser();
     console.log("User Info:", user);
@@ -39,7 +42,7 @@ export const Header = async () => {
             
             {/* Search bar, cart icon, and user account section */}
             <div className="w-auto md:w-1/3 flex items-center justify-end gap-5">
-                <SearchBar/>
+                <SearchBar products={products}/>
                 <CartIcon/>
                 <FavouriteIcon/>
 
