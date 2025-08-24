@@ -24,12 +24,12 @@ const socialLink = [
   },
   {
     title: "Github",
-    href: "https://www.youtube.com",
+    href: "https://github.com/shylekhwani/ecomm",
     icon: <Github className="w-5 h-5" />,
   },
   {
     title: "Linkedin",
-    href: "https://www.youtube.com",
+    href: "https://www.linkedin.com/in/yash-lekhwani-73792b224/",
     icon: <Linkedin className="w-5 h-5" />,
   },
 ];
