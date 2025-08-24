@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import Fuse from "fuse.js";
 import { GETAll_PRODUCTSResult } from "@/sanity.types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface SearchBarDialogProps {
   products: GETAll_PRODUCTSResult;
@@ -14,11 +15,15 @@ interface SearchBarDialogProps {
 }
 
 export const SearchBarDialog = ({ products, isOpen, onClose }: SearchBarDialogProps) => {
+
+  const router = useRouter();
+
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<GETAll_PRODUCTSResult>([]);
+  
 
   const fuse = new Fuse(products, {
-    keys: ["name", "variant"],
+    keys: ["name", "variant", "categories.title","brand.title"],
     threshold: 0.3,
   });
 
@@ -30,6 +35,13 @@ export const SearchBarDialog = ({ products, isOpen, onClose }: SearchBarDialogPr
     }
     const matches = fuse.search(value).map((res) => res.item);
     setResults(matches);
+  };
+  
+  const handelRoute = function(slug:string){
+   router.push(`/product/${slug}`);
+   setQuery("");
+   setResults([]);
+   onClose();
   };
 
   return (
@@ -62,6 +74,7 @@ export const SearchBarDialog = ({ products, isOpen, onClose }: SearchBarDialogPr
           {results.length > 0 ? (
             results.map((product) => (
               <div
+                onClick={()=>handelRoute(product?.slug?.current || "") }
                 key={product._id}
                 className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 
                            bg-white shadow-sm cursor-pointer hover:bg-gray-50 hover:shadow-md transition"

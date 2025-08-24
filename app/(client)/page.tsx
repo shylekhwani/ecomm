@@ -15,8 +15,8 @@ export default async function Home() {
         <ProductGrid/>
         <PopularCategories categories={categories}/>
         <ShopByBrands/>
-        {/* <LatestBlog/> */}
     </Container>
    </>
   );
 };
+
