@@ -8,7 +8,7 @@ import { FavouriteIcon } from '../product/FavouriteIcon'
 import { SignIn } from './SignIn'
 import { MobileMenu } from '../mobile/MobileMenu'
 import {auth, currentUser } from '@clerk/nextjs/server'
-import { ClerkLoaded, SignedIn, UserButton } from '@clerk/nextjs'
+import { ClerkLoaded, SignedIn, UserButton, SignedOut } from '@clerk/nextjs'
 import { getAllProducts, getMyOrders } from "@/sanity/queries";
 import Link from 'next/link'
 import { Logs } from 'lucide-react'
@@ -58,11 +58,14 @@ export const Header = async () => {
                     </Link>
                   )}
 
+                {/* Auth Section */}
                 <ClerkLoaded>
                   <SignedIn>
-                  <UserButton/>
+                    <UserButton />
                   </SignedIn>
-                  {!user && <SignIn/>}
+                  <SignedOut>
+                    <SignIn  />
+                  </SignedOut>
                 </ClerkLoaded>
             </div>
              
