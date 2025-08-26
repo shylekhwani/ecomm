@@ -3,8 +3,9 @@ import { clerkMiddleware } from '@clerk/nextjs/server';
 
 export default clerkMiddleware({
   authorizedParties: [
-    "https://ecomm-7tax7sjak-shylekhwanis-projects.vercel.app", // your Vercel URL
-     "http://localhost:3000",
+    "https://ecomm-7tax7sjak-shylekhwanis-projects.vercel.app",
+    "https://ecomm-ebon-nine.vercel.app", // your Vercel URL
+    "http://localhost:3000",
   ], 
 });
 
