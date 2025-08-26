@@ -1,6 +1,12 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
 
-export default clerkMiddleware();
+
+export default clerkMiddleware({
+  authorizedParties: [
+    "https://ecomm-7tax7sjak-shylekhwanis-projects.vercel.app", // your Vercel URL
+     "http://localhost:3000",
+  ], 
+});
 
 export const config = {
   matcher: [
