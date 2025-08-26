@@ -40,7 +40,7 @@ export async function createCheckoutSession(
         orderNumber: metadata.orderNumber,
         customerName: metadata.customerName,
         customerEmail: metadata.customerEmail,
-        clerkUserId: metadata.UserId!,
+        UserId: metadata.UserId!,
         address: JSON.stringify(metadata.address),
       },
       mode: "payment",
@@ -50,9 +50,9 @@ export async function createCheckoutSession(
         enabled: true,
       },
       success_url: `${
-        process.env.NEXT_PUBLIC_BASE_URL
+        process.env.NEXTAUTH_URL
       }/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
+      cancel_url: `${process.env.NEXTAUTH_URL}/cart`,
       line_items: items?.map((item) => ({
         price_data: {
           currency: "USD",
