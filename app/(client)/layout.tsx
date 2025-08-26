@@ -1,7 +1,7 @@
 import "../globals.css";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
-import { ClerkProvider } from '@clerk/nextjs';
+import { SessionProvider } from "next-auth/react"
 
 
 export default function RootLayout({
@@ -10,12 +10,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider> 
+    <SessionProvider> 
      <div className="flex flex-col min-h-screen"> 
           <Header/>
            <main className="flex-1">{children}</main>
           <Footer/>
       </div>
-    </ClerkProvider>
+    </SessionProvider>
   );
 };

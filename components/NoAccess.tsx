@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import {Logo} from "./header/Logo";
-import { SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignInAction } from "@/actions/authentication";
 import { Button } from "./ui/button";
 
 const NoAccess = ({
@@ -30,11 +30,11 @@ const NoAccess = ({
         {/*content with details and sign-in button */}
         <CardContent className="space-y-4">
           <p className="text-center font-medium text-[#151515]/80">{details}</p>
-          <SignInButton mode="modal">
+          <form action={SignInAction}>
             <Button className="w-full bg-[#038354] hover:bg-[#063d29] text-white" size="lg">
               Sign in
             </Button>
-          </SignInButton>
+          </form>
         </CardContent>
 
         {/* Footer with sign-up button */}
@@ -42,11 +42,11 @@ const NoAccess = ({
           <div className="text-sm text-muted-foreground text-center">
             Don&rsquo;t have an account?
           </div>
-          <SignUpButton mode="modal">
+          
             <Button variant="outline" className="w-full" size="lg">
               Create an account
             </Button>
-          </SignUpButton>
+         
         </CardFooter>
       </Card>
     </div>

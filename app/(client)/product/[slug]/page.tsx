@@ -25,7 +25,7 @@ const SingleProductPage = async ({
   if (!product) {
     return notFound();
   };
-   console.log("productDeatils", product);
+  //  console.log("productDeatils", product);
 
   return (
     <Container className="flex flex-col md:flex-row gap-10 py-10">

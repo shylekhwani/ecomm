@@ -5,23 +5,24 @@ import { HeaderMenu } from './HeaderMenu'
 import SearchBar from './SearchBar'
 import { CartIcon } from './CartIcon'
 import { FavouriteIcon } from '../product/FavouriteIcon'
-import { SignIn } from './SignIn'
 import { MobileMenu } from '../mobile/MobileMenu'
-import {auth, currentUser } from '@clerk/nextjs/server'
-import { ClerkLoaded, SignedIn, UserButton, SignedOut } from '@clerk/nextjs'
-import { getAllProducts, getMyOrders } from "@/sanity/queries";
+import { getAllProducts, getMyOrders } from "@/sanity/queries"
 import Link from 'next/link'
 import { Logs } from 'lucide-react'
+import { auth } from '@/lib/auth'
+import { SignOutAction, SignInAction } from '@/actions/authentication'
+import { SignIn } from './SignIn'
+import Image from 'next/image'
 
 export const Header = async () => {
 
-    const products = await getAllProducts();
+   const products = await getAllProducts();
     // console.log("Products in Header:", products);
 
-    const user = await currentUser();
-    console.log("User Info:", user);
-
-    const { userId } = await auth();
+   const session = await auth();
+   const user = session?.user;
+   const userId = session?.user?.id;
+  //  console.log("user", user)
 
     let orders = null;
 
@@ -58,17 +59,24 @@ export const Header = async () => {
                     </Link>
                   )}
 
-                {/* Auth Section */}
-                <ClerkLoaded>
-                  <SignedIn>
-                    <UserButton />
-                  </SignedIn>
-                  <SignedOut>
-                    <SignIn  />
-                  </SignedOut>
-                </ClerkLoaded>
-            </div>
-             
+                  {user ? (
+                  <form action={SignOutAction}>
+                    <button className=" rounded-md text-white">
+                      <Image
+                        src={user?.image || "images/emptyCart.png"} 
+                        alt="userImage"
+                        width={32}
+                        height={32}
+                        className="rounded-full"
+                      />
+                    </button>
+                  </form>
+                ) : (
+                  <form action={SignInAction}>
+                      <SignIn/>
+                  </form>
+                )}
+             </div>
         </Container>
     </header>
   )

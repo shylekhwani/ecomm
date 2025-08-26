@@ -1,10 +1,15 @@
 import NoAccess from "@/components/NoAccess";
 import WishListProducts from "@/components/WishListProducts";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@/lib/auth";
 import React from "react";
 
 const WishListPage = async () => {
-  const user = await currentUser();
+
+  const session = await auth();
+  const user = session?.user;
+
+  // console.log("SessionAuth", session);
+
   return (
     <>
       {user ? (

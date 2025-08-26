@@ -25,15 +25,23 @@ import { Address } from "@/sanity.types"; // Type for addresses fetched from San
 import { client } from "@/sanity/lib/client"; // Sanity client for fetching data
 import { urlFor } from "@/sanity/lib/image"; // Utility for image URLs from Sanity
 import useStore from "@/store"; // Zustand global store (cart state management)
-import { useAuth, useUser } from "@clerk/nextjs"; // Clerk auth hooks
+
 import { ShoppingBag, Trash } from "lucide-react"; 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast"; 
 import AddTofavourite from "@/components/product/AddToFavourite";
+import { useSession } from "next-auth/react";
+
 
 const CartPage = () => {
+  const { data: session } = useSession();
+  const user = session?.user;
+  const isSignedIn = !!user;
+
+  // console.log("Session in cart", session);
+
   
   const {
     deleteCartProduct, 
@@ -46,8 +54,6 @@ const CartPage = () => {
  
   const [loading, setLoading] = useState(false); // Loading state for async actions
   const groupedItems = useStore((state) => state.getGroupedItems()); // Group items in cart by product
-  const { isSignedIn } = useAuth(); // Check if user is signed in
-  const { user } = useUser(); // Get user details
   const [addresses, setAddresses] = useState<Address[] | null>(null); // Store fetched addresses
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null); // Currently selected delivery address
 
@@ -99,9 +105,9 @@ const CartPage = () => {
     try {
       const metadata: Metadata = {
         orderNumber: crypto.randomUUID(),
-        customerName: user?.fullName ?? "Unknown",
-        customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
-        clerkUserId: user?.id,
+        customerName: user?.name ?? "Unknown",
+        customerEmail: user?.email ?? "Unknown",
+        UserId: user?.id ?? "",
         address: selectedAddress,
       };
       const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
