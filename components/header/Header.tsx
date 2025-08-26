@@ -1,4 +1,3 @@
-import React from 'react'
 import Container from '../Container'
 import { Logo } from './Logo'
 import { HeaderMenu } from './HeaderMenu'
@@ -12,7 +11,7 @@ import { Logs } from 'lucide-react'
 import { auth } from '@/lib/auth'
 import { SignOutAction, SignInAction } from '@/actions/authentication'
 import { SignIn } from './SignIn'
-import Image from 'next/image'
+import { Signout } from './Signout'
 
 export const Header = async () => {
 
@@ -61,15 +60,7 @@ export const Header = async () => {
 
                   {user ? (
                   <form action={SignOutAction}>
-                    <button className=" rounded-md text-white">
-                      <Image
-                        src={user?.image || "images/emptyCart.png"} 
-                        alt="userImage"
-                        width={32}
-                        height={32}
-                        className="rounded-full"
-                      />
-                    </button>
+                    <Signout user={session}/>
                   </form>
                 ) : (
                   <form action={SignInAction}>
