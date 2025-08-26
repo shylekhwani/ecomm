@@ -57,7 +57,7 @@ const CartPage = () => {
   const [addresses, setAddresses] = useState<Address[] | null>(null); // Store fetched addresses
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null); // Currently selected delivery address
 
-  console.log("CartPage", "GrpItems->", groupedItems, "address->", addresses, "selctdAdd->", selectedAddress);
+  // console.log("CartPage", "GrpItems->", groupedItems, "address->", addresses, "selctdAdd->", selectedAddress);
 
   // Fetch addresses from Sanity CMS
   const fetchAddresses = async () => {
