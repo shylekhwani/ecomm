@@ -107,7 +107,7 @@ const CartPage = () => {
         orderNumber: crypto.randomUUID(),
         customerName: user?.name ?? "Unknown",
         customerEmail: user?.email ?? "Unknown",
-        UserId: user?.id ?? "",
+        authUserId: user?.id ?? "",
         address: selectedAddress,
       };
       const checkoutUrl = await createCheckoutSession(groupedItems, metadata);

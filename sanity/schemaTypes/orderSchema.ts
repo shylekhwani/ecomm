@@ -34,7 +34,7 @@ export const orderSchema = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "clerkUserId",
+      name: "authUserId",
       title: "Store User ID",
       type: "string",
       validation: (Rule) => Rule.required(),

@@ -97,7 +97,7 @@ async function createOrderInSanity(
   } = session;
 
   // Extract and parse metadata (address is stored as JSON string)
-  const { orderNumber, customerName, customerEmail, clerkUserId, address } =
+  const { orderNumber, customerName, customerEmail, authUserId, address } =
     metadata as unknown as Metadata & { address: string };
   const parsedAddress = address ? JSON.parse(address) : null;
 
@@ -140,7 +140,7 @@ async function createOrderInSanity(
     stripePaymentIntentId: payment_intent,
     customerName,
     stripeCustomerId: customerEmail, // Might actually be the email instead of the ID
-    clerkUserId,
+    authUserId,
     email: customerEmail,
     currency,
     amountDiscount: total_details?.amount_discount

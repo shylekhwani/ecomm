@@ -11,7 +11,7 @@ export interface Metadata {
   orderNumber: string;
   customerName: string;
   customerEmail: string;
-  UserId?: string;
+  authUserId?: string;
   address?: Address | null;
 };
 
@@ -40,7 +40,7 @@ export async function createCheckoutSession(
         orderNumber: metadata.orderNumber,
         customerName: metadata.customerName,
         customerEmail: metadata.customerEmail,
-        UserId: metadata.UserId!,
+        authUserId: metadata.authUserId!,
         address: JSON.stringify(metadata.address),
       },
       mode: "payment",
